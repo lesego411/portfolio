@@ -1,0 +1,227 @@
+:root {
+	--bg-color:#151843;
+	
+	--moon-color:#ebf3ff;
+	--moon-shadow-color:#cedfff;
+	--moon-tongue-color:#f42b19;
+	
+	--star-red-color:#f61b2f;
+	--star-white-color:#ebf3ff;
+	--star-light-blue-color:#39beff;
+	--star-blue-color:#0a98fa;
+}
+
+body {
+	height:100vh;
+	margin:0;
+	background:var(--bg-color);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+#moon {
+	width:300px;
+	height:300px;
+	background:var(--moon-color);
+	border-radius:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	box-shadow:inset -40px 0 0px 0 var(--moon-shadow-color), 0 0 100px rgba(255, 255, 255, .5);
+	animation-name:shine;
+	animation-duration:5s;
+	animation-timing-function:ease;
+	animation-iteration-count:infinite;
+}
+@keyframes shine {
+	0% {box-shadow:inset -40px 0 0px 0 var(--moon-shadow-color), 0 0 100px rgba(255, 255, 255, .5)}
+	50% {box-shadow:inset -40px 0 0px 0 var(--moon-shadow-color), 0 0 100px rgba(255, 255, 255, .3)}
+	100% {box-shadow:inset -40px 0 0px 0 var(--moon-shadow-color), 0 0 100px rgba(255, 255, 255, .5)}
+}
+
+.eye {
+	display:inline-block;
+	width:25px;
+	height:25px;
+	background:var(--bg-color);
+	border-radius:100%;
+}
+
+.eye:first-child {
+	margin-right:55px;
+}
+
+#mouth {
+	width:50px;
+	height:25px;
+	background:var(--bg-color);
+	margin:auto;
+	margin-top:5px;
+	border-bottom-right-radius:100px;
+	border-bottom-left-radius:100px;
+}
+
+#mouth:after {
+	content:'';
+	display:block;
+	width:25px;
+	height:12px;
+	background:var(--moon-tongue-color);
+	border-radius:100%;
+	position:absolute;
+	margin-top:10px;
+	margin-left:13px;
+}
+
+.crater {
+	position:absolute;
+	width:50px;
+	height:55px;
+	background:var(--moon-color);
+	border-radius:100px;
+	box-shadow:inset 20px 0 0px 0 var(--moon-shadow-color);
+}
+.crater#one {
+	margin-left:-50px;
+	margin-top:-80px;
+	transform:rotate(45deg);
+}
+.crater#two {
+	margin-left:-90px;
+	margin-top:20px;
+	box-shadow:inset 10px 0 0 0 var(--moon-shadow-color);
+	transform:rotate(-10deg) scale(.8);
+}
+.crater#three {
+	margin-left:-30px;
+	margin-top:90px;
+	transform:rotate(-65deg) scale(1.2);
+	box-shadow:inset 15px 0 0 0 var(--moon-shadow-color);
+}
+.crater#four {
+	margin-top:70px;
+	margin-left:50px;
+	box-shadow:inset 10px 0 0 0 var(--moon-shadow-color);
+	transform:rotate(230deg) scale(.7);
+}
+
+.crater-round {
+	position:absolute;
+	width:15px;
+	height:15px;
+	border-radius:100px;
+	background:var(--moon-shadow-color);
+}
+.crater-round#one {
+	margin-top:-70px;
+	margin-left:10px;
+}
+.crater-round#two {
+	margin-top:70px;
+	margin-left:-90px;
+}
+.crater-round#three {
+	margin-left:70px;
+	margin-top:30px;
+}
+
+.star {
+	position:absolute;
+	width:10px;
+	height:10px;
+	background:white;
+	border-radius:100px;
+}
+.star#one {
+	background:var(--star-red-color);
+	margin-top:-20px;
+	margin-left:-20px;
+}
+.star#two {
+	background:var(--star-blue-color);
+	margin-top:10px;
+	margin-left:-40px;
+	transform:scale(1.3);
+}
+.star#three {
+	background:var(--star-light-blue-color);
+	margin-top:-50px;
+	margin-left:30px;
+	transform:scale(.8);
+}
+.star#four {
+	background:var(--star-white-color);
+	margin-top:-60px;
+	margin-left:-10px;
+	transform:scale(1.3);
+}
+.star#five {
+	background:var(--star-white-color);
+	margin-top:-60px;
+	margin-left:120px;
+}
+.star#six {
+	background:var(--star-red-color);
+	margin-top:-55px;
+	margin-left:200px;
+}
+.star#seven {
+	background:var(--star-blue-color);
+	margin-top:-35px;
+	margin-left:270px;
+}
+.star#eight {
+	background:var(--star-red-color);
+	margin-top:50px;
+	margin-left:370px;
+	transform:scale(1.4);
+}
+.star#nine {
+	background:var(--star-white-color);
+	margin-top:100px;
+	margin-left:350px;
+	transform:scale(1.2);
+}
+.star#ten {
+	background:var(--star-light-blue-color);
+	margin-top:170px;
+	margin-left:355px;
+}
+.star#eleven {
+	background:var(--star-white-color);
+	margin-top:290px;
+	margin-left:300px;
+	transform:scale(1.4);
+}
+.star#twelve {
+	background:var(--star-blue-color);
+	margin-top:350px;
+	margin-left:130px;
+}
+.star#thirteen {
+	background:var(--star-white-color);
+	margin-top:300px;
+	margin-left:0px;
+}
+.star#fourteen {
+	background:var(--star-red-color);
+	margin-top:230px;
+	margin-left:-50px;
+}
+.star#fifteen {
+	background:var(--star-white-color);
+	margin-top:170px;
+	margin-left:-65px;
+}
+.star#sixteen {
+	background:var(--star-blue-color);
+	margin-top:280px;
+	margin-left:-60px;
+	transform:scale(1.4);
+}
+.star#seventeen {
+	background:var(--star-red-color);
+	margin-top:340px;
+	margin-left:220px;
+}
