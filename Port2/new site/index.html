@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Thusang</title>
+        <link rel="stylesheet" type="text/css" href="body.css">
+        <script type="text/javascript" src="jquery-1.8.3.js"></script>
+        
+</head>
+<body>
+
+    <div class="hero">
+        <div class="hero__title">
+          <h1>YOUR BUSINESS OR TEAM HAS POTENTIAL TO GET TO THE TOP</h1>
+          <span>You just need a little help getting there…</span>
+        </div>
+      </div>
+      
+      <div class="accordian-block">
+        <div class="accordian-block__wrap">
+          <span class="subtitle">To the top</span>
+          <h2>Honest content resonates with an audience, ensuring the message is recived</h2>
+          <p>Humans intrinsingly know when somethings not right. You can’t pull the wool over peoples eyes. We knew this when we helped a global company talk directly to the decision maker.</p>
+          
+          <div id="acc-content" class="accordian-block__content hidden">
+            <p class="intro">Some brand Needed a way to show what it would be like to work in a resturant.  We knew the best way to do this would be to tell the story through the eyes of an employee.</p>
+            <div id="gallery" class="gallery">
+              <div class="gallery-wrap">
+                <div class="image-portrait"></div>
+      
+                <div class="image-wrap">
+                  <div class="image-landscape"></div>
+                  <p>We Created the film rig custom for the project, ensuring the audience feels fully engaged in real action.</p>
+                </div>
+      
+                <div class="image-portrait"></div>
+                
+                <div class="image-wrap">
+                  <div class="image-landscape"></div>
+                  <p class="">We Created the film rig custom for the project, ensuring the audience feels fully engaged in real action.</p>
+                </div>
+              </div>
+              <div class="gallery-slider"></div>
+            </div>
+          </div>
+      
+          <button id="acc-toggle" class="button dektop-asset">Learn More</button>
+          <button class="button mobile-asset">Read More</button>
+        </div>
+      </div>
+      
+      <div class="split-block">
+        <div class="split-block__image-block">
+          <div class="img"></div>
+        </div>
+        <div class="split-block__text-block">
+          <span class="subtitle">To the top</span>
+          <h2>If you want something from your audience, you have to give them something first.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero veniam odio itaque. Molestiae aut dicta accusantium quod, modi ad alias enim dolor delectus iusto! Inventore tempora labore nobis doloribus optio nulla sit corrupti nostrum, tempore debitis pariatur minus maiores velit, autem ex eum distinctio error fugit. Itaque voluptatum quam veritatis fuga impedit nulla dolor.</p> 
+          <p>Nam dignissimos, ratione odit doloribus cum porro, aut. Ipsum nisi odio voluptatum, et, reprehenderit accusamus, est provident debitis dicta ullam esse assumenda, odit? Alias architecto enim pariatur libero ipsam mollitia maiores minus quibusdam numquam perspiciatis eveniet sit dolores eligendi inventore, ea voluptatum debitis iure, repellendus iste culpa! Voluptatibus quam ipsum nisi odit deserunt qui, consectetur ducimus, quis officia quaerat sapiente dolores, ad libero! Tenetur provident, omnis.</p>
+        </div>
+      </div>
+      
+      <div class="block--alt"></div>
+      
+      <div class="video-block">
+        <div class="video-block__main">
+          <button class="button--play"><span></span></button>
+        </div>
+        
+        <div class="video-block__intro">
+          <h3>Intro</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero veniam odio itaque. Molestiae aut dicta accusantium quod, modi ad alias enim dolor delectus iusto!
+          </p>
+        </div>
+        
+        <div class="video-block__extra">
+          <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide"></div>
+              <div class="swiper-slide"></div>
+              <div class="swiper-slide"></div>
+              ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+      
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+<script>
+
+var DemoTool = DemoTool || {};
+
+DemoTool.init = function() {
+  var modules = [
+    DemoTool.Accordian,
+    DemoTool.Gallery,
+    DemoTool.SplitFix,
+    DemoTool.MiniSlider
+  ];
+
+  for (var i = modules.length - 1; i >= 0; i--) {
+    modules[i].init.call();
+  }
+};
+
+DemoTool.Accordian = (function() {
+  var accToggle = document.getElementById("acc-toggle");
+  var accContent = document.getElementById("acc-content");
+
+  var toggleAccordian = function() {
+    var text = accToggle.innerHTML === "Learn More" ? "Close" : "Learn More";
+
+    accContent.classList.toggle("hidden");
+    accToggle.innerHTML = text;
+  };
+
+  var eventListeners = function() {
+    accToggle.addEventListener("click", toggleAccordian);
+  };
+
+  var init = function() {
+    eventListeners();
+  };
+
+  return {
+    init: init
+  };
+})();
+
+DemoTool.Gallery = (function() {
+  var galleryWrap = document.getElementById("gallery").children[0];
+  var galleryItems = galleryWrap.children;
+
+  var getWrapperWidth = function() {
+    var totalWidth = 0;
+
+    for (var i = galleryItems.length - 1; i >= 0; i--) {
+      totalWidth += galleryItems[i].offsetWidth + 40;
+
+      if (i === 0) {
+        setWrapperWidth(totalWidth);
+      }
+    }
+  };
+
+  var setWrapperWidth = function(width) {
+    galleryWrap.style.width = width + "px";
+  };
+
+  var init = function() {
+    getWrapperWidth();
+  };
+
+  return {
+    init: init
+  };
+})();
+
+DemoTool.SplitFix = (function() {
+  var splitBlock = document.getElementsByClassName("split-block")[0];
+  var splitBlockImageBlock = splitBlock.children[0];
+  var blockOffest = 0;
+
+  var scrollListener = function(event) {
+    if (
+      window.scrollY >= splitBlock.offsetTop &&
+      window.scrollY < splitBlock.offsetTop + blockOffset
+    ) {
+      splitBlockImageBlock.classList.add("fixed");
+      splitBlockImageBlock.classList.remove("bottomed");
+    } else if (window.scrollY > splitBlock.offsetTop + blockOffset) {
+      splitBlockImageBlock.classList.remove("fixed");
+      splitBlockImageBlock.classList.add("bottomed");
+    } else {
+      splitBlockImageBlock.classList.remove("fixed");
+    }
+  };
+
+  var calculateValues = function() {
+    var imageHeight = splitBlockImageBlock.offsetHeight;
+    var blockHeight = splitBlock.offsetHeight;
+
+    blockOffset = blockHeight - imageHeight;
+  };
+
+  var eventListeners = function() {
+    window.addEventListener("scroll", scrollListener);
+    window.addEventListener("resize", calculateValues);
+  };
+
+  var init = function() {
+    eventListeners();
+    calculateValues();
+  };
+
+  return {
+    init: init
+  };
+})();
+
+DemoTool.MiniSlider = (function() {
+  var miniSlider;
+
+  var initSwiper = function() {
+    miniSlider = new Swiper(".swiper-container", {
+      //       // Optional parameters
+      //       direction: 'vertical',
+      //       loop: true,
+      //       // If we need pagination
+      //       pagination: '.swiper-pagination',
+      //       // Navigation arrows
+      //       nextButton: '.swiper-button-next',
+      //       prevButton: '.swiper-button-prev',
+      //       // And if we need scrollbar
+      //       scrollbar: '.swiper-scrollbar',
+    });
+  };
+
+  var init = function() {
+    initSwiper();
+  };
+
+  return {
+    init: init
+  };
+})();
+
+DemoTool.init();
+
+    
+</script>
+
+</body>
+</html>
